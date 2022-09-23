@@ -1,6 +1,8 @@
 package cats
 
-import "database/sql"
+import (
+	"database/sql"
+)
 
 type Cat struct {
 	Id          int    `json:"id"`
@@ -30,7 +32,7 @@ func GetAllCats(db *sql.DB) ([]Cat, error) {
 
 	defer rows.Close()
 
-	var cats []Cat
+	cats := []Cat{}
 
 	for rows.Next() {
 		var c Cat
